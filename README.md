@@ -7,7 +7,7 @@ Example:
 
 will return a JSON string that contains all 6 letter words with the second letter as **s** and the third letter as **a**.
 
-`{
+``{
     "words":
         ["asadha", "asanga", "asarum", "bsarch", "isaiah", "isatis", "osasco", "psalms", "usable", "usacil", "usance"],
         "meanings": [
@@ -29,6 +29,6 @@ will return a JSON string that contains all 6 letter words with the second lette
     "status": "success",
     "message": "",
     "start": 0
-}`
+}``
 
 Change `wordPattern = "*sa***"` in test.py line 7 to change the pattern
