@@ -40,8 +40,11 @@ Set `wordFinder.variable = "l"` in test.py after line 14
 variable v can be either of : f | l | r | b
 
 f = fixed
+
 l = left
+
 r = right
+
 b = both
 
 For example, for the pattern `"*sa***"` the SQL's WHERE clause would be as follows :
