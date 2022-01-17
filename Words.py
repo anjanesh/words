@@ -166,13 +166,13 @@ class Words_SQLite3(Words, SQLite3Iterator):
     def getWHERE(self):
         sql = ""
 
-        if self.variable == 'f':
+        if self.variable == 'f': # fixed
             sql += "LENGTH(w.`lemma`) = %d AND " % self.length
             for i in range(0, len(self.pattern)):
                 if self.pattern[i] == '*':continue
                 sql += """SUBSTR(`lemma`, %d, 1) = '%s' AND """ % (i + 1, self.pattern[i])
 
-        elif self.variable == 'l':
+        elif self.variable == 'l': # left
             sql += "w.`lemma` LIKE '%"
             flag = False
             for i in range(0, len(self.pattern)):
@@ -181,7 +181,7 @@ class Words_SQLite3(Words, SQLite3Iterator):
                 sql += self.pattern[i] if self.pattern[i] != '*' else '_'
             sql += "' AND "
 
-        elif self.variable == 'r':
+        elif self.variable == 'r': # right
             sql += "w.`lemma` LIKE '"
             like = ''
             flag = False
@@ -191,10 +191,12 @@ class Words_SQLite3(Words, SQLite3Iterator):
                 like = (self.pattern[i] if self.pattern[i] != '*' else '_') + like
             sql += like + "%' AND "
 
-        elif self.variable == 'b':
+        elif self.variable == 'b': # both
             like = re.sub(r'^\**(.*?)\**$', r'%\1%', self.pattern)
             like = re.sub(r'\*', r'_', like)
             sql += "w.`lemma` LIKE '%s' AND " % like
+
+        # print(sql)
 
         if self.spaces is False:sql += "INSTR(w.`lemma`,' ') = 0 AND "
         if self.hyphens is False:sql += "INSTR(w.`lemma`,'-') = 0 AND "

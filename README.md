@@ -34,3 +34,23 @@ will return a JSON string that contains all 6 letter words with the second lette
 ```
 
 Change `wordPattern = "*sa***"` in test.py line 7 to change the pattern
+
+Set `wordFinder.variable = "l"` in test.py after line 14
+
+variable v can be either of : f | l | r | b
+
+f = fixed
+l = left
+r = right
+b = both
+
+For example, for the pattern `"*sa***"` the SQL's WHERE clause would be as follows :
+------------------------------------------------------------------------------------
+f : `LENGTH(w.lemma) = 6 AND SUBSTR(lemma, 2, 1) = 's' AND SUBSTR(lemma, 3, 1) = 'a'`
+l : `w.lemma LIKE '%sa___'`
+r : `w.lemma LIKE '_sa%'`
+b : `w.lemma LIKE '%sa%'`
+
+underscore specifies a single character instance in SQL
+
+https://www.w3schools.com/sql/sql_like.asp

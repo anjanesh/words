@@ -11,7 +11,7 @@ data = { 'words': [], 'meanings': [] }
 Words.Words_SQLite3.wordnet_db = 'wordnet-31.db'
 
 try:
-    wordFinder = Words.Words_SQLite3(wordPattern, start, 25)
+    wordFinder = Words.Words_SQLite3(wordPattern, start, 25)    
     wordFinder.run()
 except sqlite3.Error as e:
     print("An error occurred:", e.args[0])
