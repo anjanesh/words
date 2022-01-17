@@ -47,8 +47,11 @@ b = both
 For example, for the pattern `"*sa***"` the SQL's WHERE clause would be as follows :
 ------------------------------------------------------------------------------------
 f : `LENGTH(w.lemma) = 6 AND SUBSTR(lemma, 2, 1) = 's' AND SUBSTR(lemma, 3, 1) = 'a'`
+
 l : `w.lemma LIKE '%sa___'`
+
 r : `w.lemma LIKE '_sa%'`
+
 b : `w.lemma LIKE '%sa%'`
 
 underscore specifies a single character instance in SQL
